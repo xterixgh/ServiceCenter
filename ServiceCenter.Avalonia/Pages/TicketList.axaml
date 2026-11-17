@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ServiceCenter.Avalonia.Pages"
+             x:Class="ServiceCenter.Avalonia.Pages.TicketList"
+             x:CompileBindings="False">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <StackPanel Spacing="4" VerticalAlignment="Center">
+                <TextBlock Classes="h2" Text="Заявки"/>
+                <TextBlock x:Name="UserInfoText" Classes="muted"/>
+            </StackPanel>
+        </Border>
+        <Border Classes="panel" Grid.Row="1" Margin="20">
+            <Grid RowDefinitions="Auto,Auto,*" RowSpacing="12">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <TextBox x:Name="SearchBox" Width="240" PlaceholderText="Клиент или неисправность"/>
+                    <ComboBox x:Name="StatusBox" Width="180" PlaceholderText="Все статусы"/>
+                    <Button Classes="primary" Content="Найти" Click="Filter_Click"/>
+                    <Button Classes="ghost" Content="Сбросить" Click="Reset_Click"/>
+                    <Button x:Name="AddButton" Classes="primary" Content="Новая заявка" Click="Add_Click"/>
+                </StackPanel>
+                <TextBlock x:Name="StatusText" Classes="muted" Grid.Row="1" Text="Загрузка..."/>
+                <ScrollViewer Grid.Row="2">
+                    <ItemsControl x:Name="TicketItems">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Classes="panel" Margin="0,0,0,8" Padding="12,10" Tag="{Binding}" PointerPressed="Row_Pressed">
+                                    <Grid ColumnDefinitions="64,240,*,140,140" ColumnSpacing="16">
+                                        <TextBlock Text="{Binding Number}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding ClientName}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Fault}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding StatusName}" VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding MasterName}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ServiceCenter.Avalonia.Pages"
+             x:Class="ServiceCenter.Avalonia.Pages.StatisticsPage"
+             x:CompileBindings="False">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <StackPanel Spacing="4">
+                <TextBlock Classes="h2" Text="Статистика"/>
+                <TextBlock Classes="muted" Text="Только чтение"/>
+            </StackPanel>
+        </Border>
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <StackPanel Spacing="12">
+                <TextBlock x:Name="SummaryText" Classes="h2"/>
+                <TextBlock Classes="h2" Text="По статусам"/>
+                <ItemsControl x:Name="StatusItems"/>
+                <TextBlock Classes="h2" Text="По мастерам"/>
+                <ItemsControl x:Name="MasterItems"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

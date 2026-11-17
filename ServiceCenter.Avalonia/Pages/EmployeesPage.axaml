@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ServiceCenter.Avalonia.Pages"
+             x:Class="ServiceCenter.Avalonia.Pages.EmployeesPage"
+             x:CompileBindings="False">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <TextBlock Classes="h2" Text="Сотрудники" VerticalAlignment="Center"/>
+        </Border>
+        <Grid Grid.Row="1" Margin="20" ColumnDefinitions="*,360" ColumnSpacing="16">
+            <Border Classes="panel">
+                <ListBox x:Name="UserList" SelectionChanged="UserList_SelectionChanged"/>
+            </Border>
+            <Border Classes="card" Grid.Column="1">
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="label" Text="ЛОГИН"/>
+                    <TextBox x:Name="LoginBox"/>
+                    <TextBlock Classes="label" Text="ИМЯ"/>
+                    <TextBox x:Name="NameBox"/>
+                    <TextBlock Classes="label" Text="ПАРОЛЬ"/>
+                    <TextBox x:Name="PasswordBox" PasswordChar="•" PlaceholderText="При правке можно оставить пустым"/>
+                    <TextBlock Classes="label" Text="РОЛЬ"/>
+                    <ComboBox x:Name="RoleBox"/>
+                    <CheckBox x:Name="ActiveBox" Content="Активен" IsChecked="True"/>
+                    <TextBlock x:Name="ErrorText" Classes="error" IsVisible="False"/>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button Classes="primary" Content="Сохранить" Click="Save_Click"/>
+                        <Button Content="Новый" Click="New_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

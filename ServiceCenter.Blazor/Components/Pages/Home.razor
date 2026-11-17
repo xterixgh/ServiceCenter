@@ -1,0 +1,78 @@
+﻿@page "/"
+@inject AppDbContext Db
+
+<section class="hero">
+    <div class="hero-main">
+        <h1>Ремонт телефонов и ноутбуков</h1>
+        <p>Оставьте заявку на сайте и сохраните номер. По нему и телефону можно узнать, на каком этапе ремонт.</p>
+        <div class="actions">
+            <a class="btn" href="/request">Оставить заявку</a>
+            <a class="btn line" href="/status">Проверить статус</a>
+        </div>
+    </div>
+    <aside class="panel">
+        <h2>Приём</h2>
+        <ul class="hours">
+            <li>Телефон +7 900 000-00-00</li>
+            <li>Каждый день, 10:00-20:00</li>
+            <li>Выдача готового устройства у диспетчера</li>
+        </ul>
+    </aside>
+</section>
+
+<h2 class="block">Услуги</h2>
+<div class="grid">
+    @foreach (var item in services)
+    {
+        <article class="panel tile">
+            <h3>@item.Name</h3>
+            <p>@Text(item.Name)</p>
+        </article>
+    }
+</div>
+
+<h2 class="block">Что принимаем</h2>
+<div class="pills">
+    @foreach (var item in devices)
+    {
+        <span class="pill">@item.Name</span>
+    }
+</div>
+
+<h2 class="block">Как проходит ремонт</h2>
+<div class="steps">
+    <article class="panel">
+        <b>1. Заявка</b>
+        <p>Укажите телефон, устройство и что случилось.</p>
+    </article>
+    <article class="panel">
+        <b>2. Ремонт</b>
+        <p>Диспетчер назначает мастера и ведёт статус.</p>
+    </article>
+    <article class="panel">
+        <b>3. Готово</b>
+        <p>Проверьте номер на сайте или заберите устройство.</p>
+    </article>
+</div>
+
+@code {
+    private List<ServiceItem> services = new();
+    private List<DeviceType> devices = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = await Db.Services.OrderBy(s => s.Name).ToListAsync();
+        devices = await Db.DeviceTypes.OrderBy(s => s.Name).ToListAsync();
+    }
+
+    private static string Text(string name)
+    {
+        if (name.Contains("Диагност"))
+            return "Проверяем, почему устройство не включается, не заряжается или греется.";
+        if (name.Contains("экран"))
+            return "Меняем разбитое стекло или матрицу, если картинка пропала.";
+        if (name.Contains("Чист"))
+            return "Убираем пыль, если ноутбук шумит или быстро садится батарея.";
+        return "Работа по этой услуге после осмотра устройства.";
+    }
+}

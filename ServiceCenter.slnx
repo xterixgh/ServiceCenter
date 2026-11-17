@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ServiceCenter.Data/ServiceCenter.Data.csproj" />
+  <Project Path="ServiceCenter.Avalonia/ServiceCenter.Avalonia.csproj" />
+  <Project Path="ServiceCenter.Blazor/ServiceCenter.Blazor.csproj" />
+</Solution>

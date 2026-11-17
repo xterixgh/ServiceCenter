@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ServiceCenter.Avalonia.Pages"
+             x:Class="ServiceCenter.Avalonia.Pages.ClientsPage"
+             x:CompileBindings="False">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <TextBlock Classes="h2" Text="Клиенты" VerticalAlignment="Center"/>
+        </Border>
+        <Grid Grid.Row="1" Margin="20" ColumnDefinitions="*,360" ColumnSpacing="16">
+            <Border Classes="panel">
+                <ListBox x:Name="ClientList" SelectionChanged="ClientList_SelectionChanged"/>
+            </Border>
+            <Border Classes="card" Grid.Column="1">
+                <StackPanel Spacing="10">
+                    <TextBlock Classes="label" Text="ФИО"/>
+                    <TextBox x:Name="NameBox"/>
+                    <TextBlock Classes="label" Text="ТЕЛЕФОН"/>
+                    <TextBox x:Name="PhoneBox"/>
+                    <TextBlock Classes="label" Text="ПРИМЕЧАНИЕ"/>
+                    <TextBox x:Name="NoteBox"/>
+                    <TextBlock x:Name="ErrorText" Classes="error" IsVisible="False"/>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button Classes="primary" Content="Сохранить" Click="Save_Click"/>
+                        <Button Content="Новый" Click="New_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

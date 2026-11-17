@@ -1,0 +1,38 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:ServiceCenter.Avalonia.Pages"
+             x:Class="ServiceCenter.Avalonia.Pages.DictionariesPage"
+             x:CompileBindings="False">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <TextBlock Classes="h2" Text="Справочники" VerticalAlignment="Center"/>
+        </Border>
+        <Grid Grid.Row="1" Margin="20" ColumnDefinitions="*,*,*" ColumnSpacing="12">
+            <Border Classes="panel">
+                <StackPanel Spacing="8">
+                    <TextBlock Classes="h2" Text="Типы устройств"/>
+                    <TextBox x:Name="DeviceBox" PlaceholderText="Название"/>
+                    <Button Classes="primary" Content="Добавить" Click="AddDevice_Click"/>
+                    <ListBox x:Name="DeviceList" Height="360"/>
+                    <Button Classes="danger" Content="Удалить выбранный" Click="DeleteDevice_Click"/>
+                </StackPanel>
+            </Border>
+            <Border Classes="panel" Grid.Column="1">
+                <StackPanel Spacing="8">
+                    <TextBlock Classes="h2" Text="Услуги"/>
+                    <TextBox x:Name="ServiceBox" PlaceholderText="Название"/>
+                    <Button Classes="primary" Content="Добавить" Click="AddService_Click"/>
+                    <ListBox x:Name="ServiceList" Height="360"/>
+                    <Button Classes="danger" Content="Удалить выбранный" Click="DeleteService_Click"/>
+                </StackPanel>
+            </Border>
+            <Border Classes="panel" Grid.Column="2">
+                <StackPanel Spacing="8">
+                    <TextBlock Classes="h2" Text="Статусы"/>
+                    <ListBox x:Name="StatusList" Height="420"/>
+                    <TextBlock Classes="muted" Text="Системные статусы удалять нельзя: от них зависят переходы заявки."/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

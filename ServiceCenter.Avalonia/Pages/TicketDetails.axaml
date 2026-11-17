@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ServiceCenter.Avalonia.Pages.TicketDetails">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock x:Name="TitleText" Classes="h2" Text="Заявка" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Classes="ghost" Content="Назад" Click="Back_Click"/>
+            </Grid>
+        </Border>
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <StackPanel Spacing="12">
+                <Border Classes="hero">
+                    <StackPanel Spacing="6">
+                        <TextBlock x:Name="InfoText" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="FaultText" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel x:Name="AssignPanel" Orientation="Horizontal" Spacing="10">
+                    <ComboBox x:Name="MasterBox" Width="260" PlaceholderText="Мастер"/>
+                    <Button Classes="primary" Content="Назначить" Click="Assign_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <ComboBox x:Name="StatusBox" Width="260"/>
+                    <Button Classes="primary" Content="Сменить статус" Click="Status_Click"/>
+                </StackPanel>
+                <TextBlock x:Name="ErrorText" Classes="error" IsVisible="False"/>
+                <TextBlock Classes="h2" Text="Комментарии"/>
+                <ItemsControl x:Name="CommentItems"/>
+                <TextBox x:Name="CommentBox" PlaceholderText="Комментарий" AcceptsReturn="True" MinHeight="70"/>
+                <Button Classes="primary" Content="Добавить комментарий" HorizontalAlignment="Left" Click="Comment_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

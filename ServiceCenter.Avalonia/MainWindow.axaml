@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:pages="using:ServiceCenter.Avalonia.Pages"
+        x:Class="ServiceCenter.Avalonia.MainWindow"
+        Title="Учёт заявок сервисного центра"
+        Icon="avares://ServiceCenter.Avalonia/Assets/app.png"
+        Width="1200" Height="780"
+        WindowStartupLocation="CenterScreen">
+    <Grid x:Name="RootGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Classes="sidebar">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="18,22,18,10" Spacing="4">
+                    <TextBlock Classes="brand" Text="СЕРВИС"/>
+                    <TextBlock x:Name="RoleText" Classes="brandsub" Text="учёт заявок"/>
+                </StackPanel>
+                <pages:AppMenu x:Name="Menu"/>
+            </DockPanel>
+        </Border>
+        <ContentControl x:Name="MainControl" Grid.Column="1"/>
+    </Grid>
+</Window>

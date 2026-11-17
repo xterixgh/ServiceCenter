@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ServiceCenter.Avalonia.Pages.TicketEdit">
+    <Grid RowDefinitions="Auto,*">
+        <Border Classes="topbar">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Classes="h2" Text="Новая заявка" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Classes="ghost" Content="Назад" Click="Back_Click"/>
+            </Grid>
+        </Border>
+        <Border Classes="card" Grid.Row="1" Margin="20" VerticalAlignment="Top">
+            <StackPanel Spacing="10">
+                <TextBlock Classes="label" Text="КЛИЕНТ"/>
+                <ComboBox x:Name="ClientBox"/>
+                <TextBlock Classes="label" Text="ТИП УСТРОЙСТВА"/>
+                <ComboBox x:Name="DeviceBox"/>
+                <TextBlock Classes="label" Text="УСЛУГА"/>
+                <ComboBox x:Name="ServiceBox"/>
+                <TextBlock Classes="label" Text="НЕИСПРАВНОСТЬ"/>
+                <TextBox x:Name="FaultBox" AcceptsReturn="True" MinHeight="80"/>
+                <TextBlock Classes="label" Text="СРОК (ГГГГ-ММ-ДД, НЕОБЯЗАТЕЛЬНО)"/>
+                <TextBox x:Name="DueBox" PlaceholderText="2026-11-20"/>
+                <TextBlock x:Name="ErrorText" Classes="error" IsVisible="False"/>
+                <Button Classes="primary" Content="Сохранить" Click="Save_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

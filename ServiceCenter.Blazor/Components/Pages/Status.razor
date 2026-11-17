@@ -1,0 +1,59 @@
+@page "/status"
+@rendermode InteractiveServer
+
+<h1>Статус</h1>
+<div class="panel form" style="max-width:520px;">
+    <label>Номер заявки</label>
+    <input @bind="number" />
+    <label>Телефон</label>
+    <input @bind="phone" />
+    <p></p>
+    <button class="primary" @onclick="Find">Показать</button>
+    @if (!string.IsNullOrEmpty(error))
+    {
+        <p class="error">@error</p>
+    }
+    @if (found)
+    {
+        <div class="result">
+            <span class="badge">@statusName</span>
+            <p>Заявка № @ticketId</p>
+            <p>@device · @service</p>
+        </div>
+    }
+</div>
+
+@code {
+    private string number = "";
+    private string phone = "";
+    private string error = "";
+    private bool found;
+    private int ticketId;
+    private string statusName = "";
+    private string device = "";
+    private string service = "";
+
+    private async Task Find()
+    {
+        found = false;
+        error = "";
+        if (!int.TryParse(number.Trim(), out int id))
+        {
+            error = "Номер заявки должен быть числом";
+            return;
+        }
+        string cleanPhone = new string(phone.Where(char.IsDigit).ToArray());
+        using var db = new AppDbContext();
+        var ticket = await db.Tickets.AsNoTracking().Include(t => t.Client).Include(t => t.TicketStatus).Include(t => t.DeviceType).Include(t => t.ServiceItem).FirstOrDefaultAsync(t => t.Id == id);
+        if (ticket == null || new string(ticket.Client.Phone.Where(char.IsDigit).ToArray()) != cleanPhone)
+        {
+            error = "Заявка с таким номером и телефоном не найдена";
+            return;
+        }
+        found = true;
+        ticketId = ticket.Id;
+        statusName = ticket.TicketStatus.Name;
+        device = ticket.DeviceType.Name;
+        service = ticket.ServiceItem.Name;
+    }
+}

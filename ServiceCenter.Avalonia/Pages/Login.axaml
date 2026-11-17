@@ -1,0 +1,15 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ServiceCenter.Avalonia.Pages.Login">
+    <Border Classes="panel" Width="360" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20">
+        <StackPanel Spacing="10">
+            <TextBlock Classes="h2" Text="Вход"/>
+            <TextBlock Classes="label" Text="Логин"/>
+            <TextBox x:Name="LoginBox"/>
+            <TextBlock Classes="label" Text="Пароль"/>
+            <TextBox x:Name="PasswordBox" PasswordChar="•"/>
+            <TextBlock x:Name="ErrorText" Classes="error" IsVisible="False"/>
+            <Button Classes="primary" Content="Войти" HorizontalAlignment="Left" Click="LoginButton_Click"/>
+        </StackPanel>
+    </Border>
+</UserControl>

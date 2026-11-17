@@ -1,0 +1,279 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <Color x:Key="Color.Background">#FFF3F6F6</Color>
+                    <Color x:Key="Color.Surface">#FFFFFFFF</Color>
+                    <Color x:Key="Color.SurfaceAlt">#FFE7F3F1</Color>
+                    <Color x:Key="Color.Field">#FFFFFFFF</Color>
+                    <Color x:Key="Color.Line">#FFC9D7D4</Color>
+                    <Color x:Key="Color.Text">#FF14312D</Color>
+                    <Color x:Key="Color.Muted">#FF5C736E</Color>
+                    <Color x:Key="Color.Accent">#FF0E7C74</Color>
+                    <Color x:Key="Color.AccentHover">#FF14988E</Color>
+                    <Color x:Key="Color.AccentPressed">#FF0A5C56</Color>
+                    <Color x:Key="Color.AccentInk">#FFFFFFFF</Color>
+                    <Color x:Key="Color.AccentMuted">#FFD7EFEB</Color>
+                    <Color x:Key="Color.Danger">#FFB42318</Color>
+                    <Color x:Key="Color.DangerHover">#FFD14336</Color>
+                    <Color x:Key="Color.Ok">#FF1B7F4E</Color>
+                    <Color x:Key="Color.RowHover">#FFEAF4F2</Color>
+                    <Color x:Key="Color.Side">#FF0B3D3A</Color>
+                    <Color x:Key="Color.SideText">#FFE7F6F3</Color>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="Color.Background">#FFF3F6F6</Color>
+                    <Color x:Key="Color.Surface">#FFFFFFFF</Color>
+                    <Color x:Key="Color.SurfaceAlt">#FFE7F3F1</Color>
+                    <Color x:Key="Color.Field">#FFFFFFFF</Color>
+                    <Color x:Key="Color.Line">#FFC9D7D4</Color>
+                    <Color x:Key="Color.Text">#FF14312D</Color>
+                    <Color x:Key="Color.Muted">#FF5C736E</Color>
+                    <Color x:Key="Color.Accent">#FF0E7C74</Color>
+                    <Color x:Key="Color.AccentHover">#FF14988E</Color>
+                    <Color x:Key="Color.AccentPressed">#FF0A5C56</Color>
+                    <Color x:Key="Color.AccentInk">#FFFFFFFF</Color>
+                    <Color x:Key="Color.AccentMuted">#FFD7EFEB</Color>
+                    <Color x:Key="Color.Danger">#FFB42318</Color>
+                    <Color x:Key="Color.DangerHover">#FFD14336</Color>
+                    <Color x:Key="Color.Ok">#FF1B7F4E</Color>
+                    <Color x:Key="Color.RowHover">#FFEAF4F2</Color>
+                    <Color x:Key="Color.Side">#FF0B3D3A</Color>
+                    <Color x:Key="Color.SideText">#FFE7F6F3</Color>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <SolidColorBrush x:Key="Brush.Background" Color="{DynamicResource Color.Background}"/>
+            <SolidColorBrush x:Key="Brush.Surface" Color="{DynamicResource Color.Surface}"/>
+            <SolidColorBrush x:Key="Brush.SurfaceAlt" Color="{DynamicResource Color.SurfaceAlt}"/>
+            <SolidColorBrush x:Key="Brush.Field" Color="{DynamicResource Color.Field}"/>
+            <SolidColorBrush x:Key="Brush.Line" Color="{DynamicResource Color.Line}"/>
+            <SolidColorBrush x:Key="Brush.Text" Color="{DynamicResource Color.Text}"/>
+            <SolidColorBrush x:Key="Brush.Muted" Color="{DynamicResource Color.Muted}"/>
+            <SolidColorBrush x:Key="Brush.Accent" Color="{DynamicResource Color.Accent}"/>
+            <SolidColorBrush x:Key="Brush.AccentHover" Color="{DynamicResource Color.AccentHover}"/>
+            <SolidColorBrush x:Key="Brush.AccentPressed" Color="{DynamicResource Color.AccentPressed}"/>
+            <SolidColorBrush x:Key="Brush.AccentInk" Color="{DynamicResource Color.AccentInk}"/>
+            <SolidColorBrush x:Key="Brush.AccentMuted" Color="{DynamicResource Color.AccentMuted}"/>
+            <SolidColorBrush x:Key="Brush.Danger" Color="{DynamicResource Color.Danger}"/>
+            <SolidColorBrush x:Key="Brush.DangerHover" Color="{DynamicResource Color.DangerHover}"/>
+            <SolidColorBrush x:Key="Brush.Ok" Color="{DynamicResource Color.Ok}"/>
+            <SolidColorBrush x:Key="Brush.RowHover" Color="{DynamicResource Color.RowHover}"/>
+            <SolidColorBrush x:Key="Brush.Side" Color="{DynamicResource Color.Side}"/>
+            <SolidColorBrush x:Key="Brush.SideText" Color="{DynamicResource Color.SideText}"/>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource Brush.Background}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style Selector="Border.sidebar">
+        <Setter Property="Background" Value="{DynamicResource Brush.Side}"/>
+    </Style>
+
+    <Style Selector="TextBlock.brand">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.SideText}"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="LetterSpacing" Value="2"/>
+    </Style>
+
+    <Style Selector="TextBlock.brandsub">
+        <Setter Property="Foreground" Value="#FFB7D9D4"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="TextBlock.h1">
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+    </Style>
+
+    <Style Selector="TextBlock.h2">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.AccentPressed}"/>
+    </Style>
+
+    <Style Selector="TextBlock.label">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Muted}"/>
+    </Style>
+
+    <Style Selector="TextBlock.muted">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Muted}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="TextBlock.error">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Danger}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="TextBlock.ok">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Ok}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="{DynamicResource Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Padding" Value="22"/>
+        <Setter Property="BoxShadow" Value="0 0 0 1 #FFC9D7D4"/>
+    </Style>
+
+    <Style Selector="Border.panel">
+        <Setter Property="Background" Value="{DynamicResource Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Line}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Padding" Value="14"/>
+    </Style>
+
+    <Style Selector="Border.topbar">
+        <Setter Property="Background" Value="{DynamicResource Brush.Surface}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,3"/>
+        <Setter Property="Padding" Value="22,16"/>
+    </Style>
+
+    <Style Selector="Border.hero">
+        <Setter Property="Background" Value="{DynamicResource Brush.SurfaceAlt}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="BorderThickness" Value="4,0,0,0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+
+    <Style Selector="TextBox">
+        <Setter Property="MinHeight" Value="38"/>
+        <Setter Property="Padding" Value="10,6"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Field}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Line}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,2"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource Brush.AccentMuted}"/>
+    </Style>
+
+    <Style Selector="TextBox:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}"/>
+    </Style>
+
+    <Style Selector="ComboBox">
+        <Setter Property="MinHeight" Value="38"/>
+        <Setter Property="Padding" Value="10,6"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Field}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Line}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,2"/>
+    </Style>
+
+    <Style Selector="Button">
+        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="Padding" Value="14,6"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource Brush.Surface}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.AccentPressed}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Brush.SurfaceAlt}"/>
+    </Style>
+
+    <Style Selector="Button.primary">
+        <Setter Property="Background" Value="{DynamicResource Brush.Accent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.AccentInk}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style Selector="Button.primary:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Brush.AccentHover}"/>
+    </Style>
+
+    <Style Selector="Button.danger">
+        <Setter Property="Background" Value="{DynamicResource Brush.Danger}"/>
+        <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style Selector="Button.ghost">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.AccentPressed}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Line}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+
+    <Style Selector="Button.nav">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.SideText}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="14,8"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="CornerRadius" Value="0"/>
+    </Style>
+
+    <Style Selector="Button.nav:pointerover">
+        <Setter Property="Background" Value="#FF145E58"/>
+    </Style>
+
+    <Style Selector="Button.navexit">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#FFF3C1BC"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="14,8"/>
+    </Style>
+
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="10,8"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource Brush.RowHover}"/>
+    </Style>
+
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource Brush.AccentMuted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+    </Style>
+
+    <Style Selector="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Text}"/>
+        <Setter Property="MinHeight" Value="32"/>
+    </Style>
+
+</Styles>

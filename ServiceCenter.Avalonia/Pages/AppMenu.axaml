@@ -1,0 +1,14 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ServiceCenter.Avalonia.Pages.AppMenu">
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Classes="navexit" Content="Выход" Click="Logout_Click" Margin="8,0,8,16"/>
+        <StackPanel Spacing="2" Margin="8,8,8,0">
+            <Button x:Name="TicketsButton" Classes="nav" Content="Заявки" Click="Tickets_Click"/>
+            <Button x:Name="ClientsButton" Classes="nav" Content="Клиенты" Click="Clients_Click"/>
+            <Button x:Name="DictButton" Classes="nav" Content="Справочники" Click="Dict_Click"/>
+            <Button x:Name="EmployeesButton" Classes="nav" Content="Сотрудники" Click="Employees_Click"/>
+            <Button x:Name="StatsButton" Classes="nav" Content="Статистика" Click="Stats_Click"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

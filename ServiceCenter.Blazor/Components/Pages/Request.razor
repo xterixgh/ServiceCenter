@@ -1,0 +1,105 @@
+@page "/request"
+@rendermode InteractiveServer
+@inject AppDbContext Db
+
+<h1>Заявка</h1>
+@if (createdId > 0)
+{
+    <section class="panel">
+        <h2>Заявка принята</h2>
+        <p>Номер: <strong>@createdId</strong></p>
+        <p>Сохраните его. Статус открывается вместе с телефоном, который вы указали.</p>
+        <a class="btn" href="/status" style="background:#0f6e66;color:#fff;">Проверить статус</a>
+    </section>
+}
+else
+{
+    <div class="layout">
+    <div class="panel form">
+        <label>ФИО</label>
+        <input @bind="name" />
+        <label>Телефон</label>
+        <input @bind="phone" placeholder="+79000000000" />
+        <label>Тип устройства</label>
+        <select @bind="deviceId">
+            <option value="0">Выберите</option>
+            @foreach (var item in devices)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <label>Услуга</label>
+        <select @bind="serviceId">
+            <option value="0">Выберите</option>
+            @foreach (var item in services)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+        <label>Неисправность</label>
+        <textarea @bind="fault"></textarea>
+        @if (!string.IsNullOrEmpty(error))
+        {
+            <p class="error">@error</p>
+        }
+        <button class="primary" @onclick="Send">Отправить</button>
+    </div>
+    <aside class="panel">
+        <h2>Что будет дальше</h2>
+        <p>Заявка сразу попадает диспетчеру. На сайте останутся номер и статус, без комментариев мастера.</p>
+    </aside>
+    </div>
+}
+
+@code {
+    private string name = "";
+    private string phone = "";
+    private string fault = "";
+    private string error = "";
+    private int deviceId;
+    private int serviceId;
+    private int createdId;
+    private List<DeviceType> devices = new();
+    private List<ServiceItem> services = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        devices = await Db.DeviceTypes.OrderBy(x => x.Name).ToListAsync();
+        services = await Db.Services.OrderBy(x => x.Name).ToListAsync();
+    }
+
+    private async Task Send()
+    {
+        string cleanPhone = new string(phone.Where(char.IsDigit).ToArray());
+        if (string.IsNullOrWhiteSpace(name) || cleanPhone.Length < 10 || deviceId == 0 || serviceId == 0 || string.IsNullOrWhiteSpace(fault))
+        {
+            error = "Заполните имя, телефон, устройство, услугу и неисправность";
+            return;
+        }
+
+        var clients = await Db.Clients.ToListAsync();
+        Client? client = clients.FirstOrDefault(c => new string(c.Phone.Where(char.IsDigit).ToArray()) == cleanPhone);
+        if (client == null)
+        {
+            client = new Client { FullName = name.Trim(), Phone = phone.Trim(), Note = "Создан с сайта" };
+            Db.Clients.Add(client);
+            await Db.SaveChangesAsync();
+        }
+
+        var status = await Db.TicketStatuses.FirstAsync(s => s.Code == "accepted");
+        var ticket = new Ticket
+        {
+            Client_Id = client.Id,
+            DeviceType_Id = deviceId,
+            Service_Id = serviceId,
+            Status_Id = status.Id,
+            FaultText = fault.Trim(),
+            Source = "site",
+            CreatedAt = DateTime.UtcNow
+        };
+        Db.Tickets.Add(ticket);
+        await Db.SaveChangesAsync();
+        createdId = ticket.Id;
+        error = "";
+    }
+}
